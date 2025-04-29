@@ -56,14 +56,20 @@ const AdminLibraryPage = () => {
       </div>
 
       <h3>Books Inventory</h3>
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>
-            {book.title} - {book.author} - ₹{book.price}
-            <button onClick={() => handleDeleteBook(book.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+     <h3>Books Inventory</h3>
+<ul>
+  {books.map(book => (
+    <li key={book.id} className="book-card">
+      <div className="book-details">
+        <strong>{book.title}</strong><br/>
+        <small>{book.author}</small><br/>
+        <small>₹{book.price}</small>
+      </div>
+      <button onClick={() => handleDeleteBook(book.id)}>Delete</button>
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 };
