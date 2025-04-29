@@ -19,25 +19,37 @@ const CustomerLibraryPage = () => {
       <h2>Customer - Library</h2>
 
       <h3>Available Books</h3>
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>
-            {book.title} - {book.author} - ₹{book.price}
-            <button onClick={() => handleAddToCart(book)}>Add to Cart</button>
-          </li>
-        ))}
-      </ul>
+<ul>
+  {books.map(book => (
+    <li key={book.id} className="book-card">
+      <div className="book-details">
+        <strong>{book.title}</strong><br/>
+        <small>{book.author}</small><br/>
+        <small>₹{book.price}</small>
+      </div>
+      <button onClick={() => handleAddToCart(book)}>Add to Cart</button>
+    </li>
+  ))}
+</ul>
 
-      <h3>Your Cart</h3>
-      <ul>
-        {cart.map((book, index) => (
-          <li key={index}>
-            {book.title} - ₹{book.price}
-          </li>
-        ))}
-      </ul>
+<h3>Your Cart</h3>
+<ul>
+  {cart.length > 0 ? (
+    cart.map((book, index) => (
+      <li key={index} className="cart-item">
+        <div className="book-details">
+          {book.title}
+        </div>
+        ₹{book.price}
+      </li>
+    ))
+  ) : (
+    <div className="empty-cart">Cart is empty</div>
+  )}
+</ul>
 
-      <h4>Total: ₹{totalPrice}</h4>
+<div className="total-price">Total: ₹{totalPrice}</div>
+
     </div>
   );
 };
