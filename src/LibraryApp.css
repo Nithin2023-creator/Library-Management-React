@@ -1,32 +1,103 @@
-.login-page, .admin-page, .customer-page {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  }
-  
-  .login-form .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .login-form input, .login-form select {
-    width: 100%;
-    padding: 8px;
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+h2, h3, h4 {
+  color: #2c3e50;
+}
+
+/* Container pages */
+.login-page, .admin-page, .customer-page, .admin-library-page, .customer-library-page {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Form styles */
+.login-form .form-group, .add-book-form {
+  margin-bottom: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #004999;
+}
+
+/* Book List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.book-card, .cart-item {
+  background: #f1f5f9;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-details {
+  flex-grow: 1;
+}
+
+/* Total Price */
+.total-price {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+}
+
+/* Add Book Form */
+.add-book-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.add-book-form input {
+  margin-top: 0;
+}
+
+/* Headings */
+h2, h3 {
+  text-align: center;
+}
+
+/* Centered Empty Cart */
+.empty-cart {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
