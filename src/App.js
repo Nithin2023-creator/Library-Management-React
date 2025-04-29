@@ -1,43 +1,38 @@
-// LibraryApp.js (Main Controller)
-import React, { Component } from 'react';
-import './LibraryApp.css';
-import LoginPage from './LoginPage';
-import AdminLibraryPage from './components/AdminLibrary';
-import CustomerLibraryPage from './components/CustomerLibrary';
+import React from 'react';
 
-class LibraryApp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false,
-      role: '',
-      username: ''
-    };
-  }
+function App() {
+  const [users, setUsers] = React.useState([
+    { id: 1, name: 'Alice', isActive: true },
+    { id: 2, name: 'Bob', isActive: false },
+    { id: 3, name: 'Charlie', isActive: true },
+    { id: 4, name: 'David', isActive: false },
+  ]);
 
-  handleLogin = (role, username) => {
-    this.setState({
-      isLoggedIn: true,
-      role,
-      username
-    });
+  const [showActiveOnly, setShowActiveOnly] = React.useState(false);
+
+  const toggleShowActive = () => {
+    setShowActiveOnly(prev => !prev);
   };
 
-  render() {
-    const { isLoggedIn, role, username } = this.state;
+  const filteredUsers = showActiveOnly
+    ? users.filter(user => user.isActive)
+    : users;
 
-    if (!isLoggedIn) {
-      return <LoginPage onLogin={this.handleLogin} />;
-    }
-
-    if (role === 'admin') {
-      return <AdminLibraryPage username={username} />;
-    } else if (role === 'customer') {
-      return <CustomerLibraryPage username={username} />;
-    }
-
-    return null;
-  }
+  return (
+    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
+      <h2>User List</h2>
+      <button onClick={toggleShowActive}>
+        {showActiveOnly ? 'Show All Users' : 'Show Active Users'}
+      </button>
+      <ul>
+        {filteredUsers.map(user => (
+          <li key={user.id}>
+            {user.name} {user.isActive ? '(Active)' : '(Inactive)'}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default LibraryApp;
+export default App;
